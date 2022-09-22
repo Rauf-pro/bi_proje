@@ -1,27 +1,14 @@
-
-import React from 'react'
-import styled from 'styled-components'
-import { CategorySelect } from './CategorySelect';
-import { CountrySelect } from './CountrySelect';
-import { IndicatorSelect } from './IndicatorSelect';
-import SelectOptions from './SelectOptions';
-import { YearSelect } from './YearSelect';
+import React from "react";
+import styled from "styled-components";
+import SelectOptions from "./SelectOptions";
 
 export const Header = () => {
   return (
     <HeaderStyled>
-    <SelectOptions/>
-       <CategorySelect />
-        <YearSelect/>
-        <IndicatorSelect/>
-        <CountrySelect/>
+      <SelectOptions />
     </HeaderStyled>
-  )
-}
+  );
+};
 const HeaderStyled = styled.div`
-display: flex;
-gap: 10px;
-
-
-
+  
 `;

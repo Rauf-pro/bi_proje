@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Header } from "../Components/Header";
 import { Title } from "../Components/Title";
 import { Mainlayout } from "../styles/Layouts";
-import Amount1 from "../Components/Amount1";
+
 
 
 
@@ -16,7 +16,7 @@ export const DashboardPage = () => {
         <Header/>
         <Row>
           <Col xl={6} lg={6}>
-          <Amount1/>
+          
           </Col>
           <Col xl={6} lg={6}>
           
