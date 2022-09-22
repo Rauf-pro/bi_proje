@@ -1,8 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import styled from 'styled-components';
+import axios from "axios"
 
 export const IndicatorSelect = () => {
     const [selectedIndicator,setSelectedIndicator] = useState([]);
+
+    const fetchData = () => {
+        axios.get("http://192.168.0.111:8000/indicator-list/").then(response => {
+            setSelectedIndicator(response.data)
+        })
+      }
+      useEffect(() => {
+        fetchData()
+      }, [])
+
 
     function handleSelectChange(event) {
         setSelectedIndicator(event.target.value);
@@ -10,9 +21,8 @@ export const IndicatorSelect = () => {
   return (
     <InidcatorSelectStyled>
         <select value={selectedIndicator} onChange={handleSelectChange}>
-            <option value="one">GDP</option>
-            <option value="two">GDP</option>
-            <option value="three">PGD</option>
+        <option>All Indicator</option>
+        {selectedIndicator.map((indicator) => <option value={indicator.id}>{indicator.name}</option> )}
         </select>
     </InidcatorSelectStyled>
   )

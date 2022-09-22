@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import BarChart from './BarChart';
 
-function Amount1() {
+
+export default  function Amount1() {
     const [data, setData] = useState([]);
-  
-    useEffect(() => {
-      fetch("http://localhost:5000/data", { method: "GET", redirect: "follow" })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          setData(json);
-        })
-        .catch((err) => console.log(err));
-    }, []);
+    
+    // useEffect(() => {
+    //   fetch("http://localhost:5000/data", { method: "GET", redirect: "follow" })
+    //     .then((res) => res.json())
+    //     .then((json) => {
+    //       console.log(json);
+    //       setData(json);
+    //     })
+    //     .catch((err) => console.log(err));
+    // }, []);
 
   
     return (
@@ -23,12 +24,10 @@ function Amount1() {
           data1={data.length === 0 ? [0, 0, 0, 0, 0, 0] : data[0].data[0].values}
           data2={data.length === 0 ? [0, 0, 0, 0, 0, 0] : data[0].data[1].values}
         />
-        <button onClick={() => window.location.reload()}>Refresh Chart</button>
+        {/* <button onClick={() => window.location.reload()}>Refresh Chart</button> */}
       </div>
     );
   }
-  
-  export default Amount1;
 
   
 

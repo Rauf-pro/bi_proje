@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Header } from "../Components/Header";
 import { Title } from "../Components/Title";
 import { Mainlayout } from "../styles/Layouts";
-import { SmallTitle } from "../Components/SmallTitle";
 import Amount1 from "../Components/Amount1";
 
 

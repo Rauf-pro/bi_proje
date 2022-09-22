@@ -11,9 +11,9 @@ export const YearSelect = () => {
   return (
     <YearSelectStyled>
         <select value={selectedYear} onChange={handleSelectChange}>
-            <option value="one">2019</option>
-            <option value="two">2020</option>
-            <option value="three">2021</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
         </select>
     </YearSelectStyled>
   )

@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
+import axios from "axios"
 
 export const CountrySelect = () => {
     const [selectedCountry,setSelectedCountry] = useState([])
     
-    useEffect(() => {
-        fetch("http://localhost:5000/country-list", { method: "GET", redirect: "follow" })
-          .then((res) => res.json())
-          .then((json) => {
-            setSelectedCountry(json)
-            
-          })
-          .catch((err) => console.log(err));
-      }, []);
+    const fetchData = () => {
+        axios.get("http://192.168.0.111:8000/country-list/").then(response => {
+            setSelectedCountry(response.data)
+        })
+      }
+      useEffect(() => {
+        fetchData()
+      }, [])
     
     function handleSelectChange(event) {
         setSelectedCountry(event.target.value);
@@ -22,7 +22,7 @@ export const CountrySelect = () => {
     <CountrySelectStyled>
         <select  onChange={handleSelectChange}>
             <option value="Select a Country">(All)</option>
-            {selectedCountry.map((country) => <option >{country.label}</option> )}
+            {selectedCountry.map((country) => <option value={country.code}>{country.name}</option> )}
             
         </select>
     </CountrySelectStyled>
