@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -48,8 +49,8 @@ function BarChart(props) {
     labels: props.labels,
     datasets: [
       {
-        label: "Dataset 1",
-        data: props.data1,
+        label: "Dataset",
+        data: props.data,
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       
