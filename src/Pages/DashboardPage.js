@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
 import FinishData from "../Components/FinishData";
 import { Header } from "../Components/Header";
@@ -17,7 +17,6 @@ export const DashboardPage = () => {
     year: [],
   });
 
-  const [finishData, setFinishData] = useState({});
   const [apiData, setApiData] = useState([]);
 
   const onChange = (event) => {
@@ -28,13 +27,12 @@ export const DashboardPage = () => {
     event.preventDefault();
     const datas = new FormData(event.target);
     const valueData = Object.fromEntries(datas.entries());
-    setFinishData(valueData);
-    const data = UseFetchData(
-      `http://192.168.0.111:8000/business-intelligence-list/?categories=${finishData.category}&indicators=${finishData.indicator}&years__year=${finishData.year}`
-    );
-    setApiData(data);
-  };
+    console.log(valueData, 'submit data')
 
+     axios.get( `http://192.168.0.111:8000/business-intelligence-list/?categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
+    
+  };
+  
   const fetchData = () => {
     axios.get("http://192.168.0.111:8000/category-list/").then((response) => {
       setFormData((prevState) => ({
@@ -81,6 +79,7 @@ export const DashboardPage = () => {
       <DashboardStyled>
         <Title title={"GDP Dashboard"} />
         <Header />
+        <Container fluid>
         <SelectOptions
           onChange={onChange}
           onSubmit={onSubmit}
@@ -90,9 +89,13 @@ export const DashboardPage = () => {
           <Col xl={6} lg={6}>
             <FinishData data={apiData} />
           </Col>
-          <Col xl={6} lg={6}></Col>
+          <Col xl={6} lg={6}>
+          
+          </Col>
         </Row>
+        </Container>
       </DashboardStyled>
+      
     </Mainlayout>
   );
 };

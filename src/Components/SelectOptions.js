@@ -52,6 +52,7 @@ function SelectOptions({ formData, onSubmit, onChange }) {
   );
 }
 const SelectOptionsStyled = styled.div`
+margin-bottom: 20px;
   .top-selects-wrapper {
     form {
       display: flex;

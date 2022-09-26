@@ -1,50 +1,131 @@
-import React, { Component } from "react";
+import { React } from "react";
 import Chart from "react-apexcharts";
 
-class ApexChart extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
+function ApexChart({ sdata }) {
+  console.log("sdsdsd", sdata);
+  console.log(sdata.length);
+
+  if (sdata.length !== 0) {
+    let state = {
       options: {
+        
+        dataLabels: {
+          enabled: true,
+          style: {
+            fontSize: "140px",
+            fontFamily: "Helvetica, Arial, sans-serif",
+            fontWeight: "bold"
+          }
+        },
+          // scales:{
+          //   x:{
+
+          //   },
+          //   y:{
+          //     show: false,
+          //     ticks:{
+          //       fontSize:"12px",
+                
+                
+          //     }
+          //   },
+          // },
+       
+          colors: ['#3663B5', '#2E66DB', '#4A80D8', '#70A1EC', '#A8CCFD'],
+       
+       
+       
+       
+       
         chart: {
-            
           id: "basic-bar",
+          background: '#F6F8FA',
+          
+        
+
+         
+        
+        },
+
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            
+         
+           
+            dataLabels: {
+              position: "top",
+              enabled: true,
+              
+              
+              
+             
+            
+            },
+          },
+        },
+        dataLabels: {
+          enabled: false,
+          
+         
           
         },
-        plotOptions: {
-            bar: {
-              horizontal: true,
-              dataLabels: {
-                position: 'top'
-              }
-              
-            }
+      
+        dataLabels: {
+          enabled: true,
+          offsetX: 60,
+          offsetY:0,
+          
+          
+          style: {
+            fontWeight:"300",
+            colors: ["#304758"],
           },
         
+        },
+        
+
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-        }
+          labels: {
+            show: false,
+            textAnchor: 'start',
+            style:{
+              fontSize:"12px",
+              colors: ["#fff"]
+            }
+          },
+
+          categories: [...sdata.map((count) => count.countries.name)],
+          
+          
+          
+         
+          
+         
+        },
+       
+       
       },
       series: [
         {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
-        }
-      ]
+          name: "Series 1",
+          data: [...sdata.map((a) => a.amount_)],
+        },
+       
+      ],
     };
-  }
-
-  render() {
+    
+    console.log("state", state);
     return (
       <div className="app">
         <div className="row">
           <div className="mixed-chart">
             <Chart
-              options={this.state.options}
-              series={this.state.series}
+              options={state.options}
+              series={state.series}
               type="bar"
-              width="500"
+              height={"900"}      
             />
           </div>
         </div>
