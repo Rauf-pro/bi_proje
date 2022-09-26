@@ -10,14 +10,16 @@ import { Mainlayout } from "../styles/Layouts";
 
 
 export const DashboardPage = () => {
+  const data = []
   return (
     <Mainlayout>
       <DashboardStyled>
         <Title title={"GDP Dashboard"} />
-        <Header/>
+        <Header />
+
         <Row>
           <Col xl={6} lg={6}>
-           <FinishData/>
+           <FinishData props={data}/>
           </Col>
           <Col xl={6} lg={6}>
           

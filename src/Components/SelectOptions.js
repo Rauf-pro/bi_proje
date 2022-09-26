@@ -63,17 +63,15 @@ function SelectOptions() {
  function onChange(event) {
     console.log(event.target.value)
   }
-  
-// const data = UseFetchData(`http://192.168.0.111:8000/business-intelligence-list/?categories=${finishData.category}&indicators=${finishData.indicator}&years__year=${finishData.year}`);
-// setApiData(data)
-console.log(apiData)
 
-  const onSubmit= (event) =>{
+
+  async function onSubmit(event) {
     event.preventDefault()
-    console.log(event.target)
     const datas = new FormData(event.target);
     const valueData = Object.fromEntries(datas.entries());
     setFinishData(valueData)
+    const data = UseFetchData(`http://192.168.0.111:8000/business-intelligence-list/?categories=${finishData.category}&indicators=${finishData.indicator}&years__year=${finishData.year}`);
+    setApiData(data)
   }
    
 

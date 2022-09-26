@@ -1,11 +1,12 @@
-import BarChart from './BarChart'
+import Chart from './BarChart'
 import React from 'react'
-import SelectOptions from './SelectOptions'
+import ApexChart from './Chart'
+
 
 function FinishData() {
   return (
     <div>
-    <BarChart />     
+        <ApexChart/>
     </div>
   )
 }
