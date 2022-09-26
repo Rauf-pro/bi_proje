@@ -5,7 +5,7 @@ import SelectOptions, { FinishData } from "./SelectOptions";
 export const Header = () => {
   return (
     <HeaderStyled>
-      <SelectOptions />
+      
     </HeaderStyled>
   );
 };
