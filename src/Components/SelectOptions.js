@@ -57,14 +57,41 @@ margin-bottom: 20px;
     form {
       display: flex;
       gap: 20px;
+      @media screen and (max-width:991px){
+         flex-direction: column;
+        }
 
       select {
         width: 300px;
         font-size: 16px;
         border: none;
         padding: 10px;
+        @media  (max-width: 991px){
+          width: 100%;
+        }
+        @media (min-width: 992px) and (max-width: 1024px){
+          width: 160px;
+        }
+        @media (min-width: 1025px) and (max-width: 1199px){
+          width: 170px;
+        }
+        @media (min-width: 1200px) and (max-width: 1399px){
+          width: 210px;
+        }
+        
         option {
           font-size: 16px;
+        }
+      }
+      button{
+        border: none;
+        font-size: 16px;
+        background: #3386FF;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 6px;
+        @media (min-width: 1200px) and (max-width: 1399px){
+          padding: 5px 10px;
         }
       }
     }

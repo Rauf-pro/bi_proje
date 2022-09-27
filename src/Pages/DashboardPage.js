@@ -29,12 +29,12 @@ export const DashboardPage = () => {
     const valueData = Object.fromEntries(datas.entries());
     console.log(valueData, 'submit data')
 
-     axios.get( `http://192.168.0.111:8000/business-intelligence-list/?categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
+     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${valueData.country}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
     
   };
   
   const fetchData = () => {
-    axios.get("http://192.168.0.111:8000/category-list/").then((response) => {
+    axios.get("http://192.168.0.113:8000/category-list/").then((response) => {
       setFormData((prevState) => ({
         category: response.data,
         indicator: [...prevState.indicator],
@@ -42,7 +42,7 @@ export const DashboardPage = () => {
         year: [...prevState.year],
       }));
     });
-    axios.get("http://192.168.0.111:8000/year-list/").then((response) => {
+    axios.get("http://192.168.0.113:8000/year-list/").then((response) => {
       setFormData((prevState) => ({
         category: [...prevState.category],
         indicator: [...prevState.indicator],
@@ -51,7 +51,7 @@ export const DashboardPage = () => {
       }));
     });
 
-    axios.get("http://192.168.0.111:8000/indicator-list/").then((response) => {
+    axios.get("http://192.168.0.113:8000/indicator-list/").then((response) => {
       setFormData((prevState) => ({
         category: [...prevState.category],
         indicator: response.data,
@@ -60,7 +60,7 @@ export const DashboardPage = () => {
       }));
     });
 
-    axios.get("http://192.168.0.111:8000/country-list/").then((response) => {
+    axios.get("http://192.168.0.113:8000/country-list/").then((response) => {
       setFormData((prevState) => ({
         category: [...prevState.category],
         indicator: [...prevState.indicator],
@@ -86,7 +86,7 @@ export const DashboardPage = () => {
           formData={formData}
         />
         <Row>
-          <Col xl={6} lg={6}>
+          <Col xl={6} lg={6} md={12} sm={12}>
             <FinishData data={apiData} />
           </Col>
           <Col xl={6} lg={6}>
