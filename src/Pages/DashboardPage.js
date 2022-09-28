@@ -16,20 +16,25 @@ export const DashboardPage = () => {
     country: [],
     year: [],
   });
-
+  const [countriesValue, setCountriesValue] = useState([]);
+  
   const [apiData, setApiData] = useState([]);
 
-  const onChange = (event) => {
-    console.log(event.target.value);
-  };
+  const onChange = (val) => setCountriesValue(val);
+  console.log(countriesValue)
+
 
   const onSubmit = (event) => {
     event.preventDefault();
     const datas = new FormData(event.target);
     const valueData = Object.fromEntries(datas.entries());
-    console.log(valueData, 'submit data')
-
-     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${valueData.country}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
+    let count
+    if(countriesValue.length > 0){
+      count = `${countriesValue.map((c) => c.value )}`
+    }else{
+      count = ''
+    }
+     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
     
   };
   
@@ -84,6 +89,7 @@ export const DashboardPage = () => {
           onChange={onChange}
           onSubmit={onSubmit}
           formData={formData}
+
         />
         <Row>
           <Col xl={6} lg={6} md={12} sm={12}>

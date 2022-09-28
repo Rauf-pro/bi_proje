@@ -31,13 +31,13 @@ function ApexChart({ sdata }) {
         plotOptions: {
           bar: {
             horizontal: true,
-            ...(sdata.length === 1 ? 
-              {
-                barHeight: '10%',
-              } : {
-                barHeight: '70%',
+            // ...(sdata.length === 1 ? 
+            //   {
+            //     barHeight: '10%',
+            //   } : {
+            //     barHeight: '70%',
                   
-              }),
+            //   }),
           
             
 
@@ -89,18 +89,18 @@ function ApexChart({ sdata }) {
       <ApexChartStyled className="app">
           <div className="graphic-container">
 
-          {sdata.length  === 1?  
+          {sdata.length > 0 && sdata.length <= 5 ?  
             <Chart
               options={state.options}
               series={state.series}
               type="bar"
-              height="150"
+              height="100"
               width="100%"
             /> : <Chart
               options={state.options}
               series={state.series}
               type="bar"
-              height="700"
+              height="1000"
               width="100%"
             />}
           </div>
@@ -112,7 +112,7 @@ function ApexChart({ sdata }) {
 const ApexChartStyled = styled.div`
  
 .graphic-container{
-  overflow-y: auto;
+  /* overflow-y: auto; */
   overflow-x: hidden;
   /* min-height: 100px;
   max-height: 400px; */
