@@ -32,12 +32,24 @@ export const DashboardPage = () => {
     const valueData = Object.fromEntries(datas.entries());
     console.log(rangeValue, "range val")
     let count
+    let min
+    let max
+    // eslint-disable-next-line no-mixed-operators
     if(countriesValue.length > 0){
       count = `${countriesValue.map((c) => c.value )}`
     }else{
       count = ''
+      
     }
-     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}&min_rank=${rangeValue.min}&max_rank=${rangeValue.max}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
+
+    if(rangeValue.min && rangeValue.max){
+      min = rangeValue.min
+      max = rangeValue.max
+    }else{
+      min = ''
+      max = ''
+    }
+     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}&min_rank=${min}&max_rank=${max}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
     
   };
   

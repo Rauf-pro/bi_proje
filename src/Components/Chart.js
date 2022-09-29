@@ -6,18 +6,30 @@ import styled from "styled-components";
 function ApexChart({ sdata }) {
   console.log("sdsdsd", sdata);
   console.log(sdata.length);
-  
+
+ 
 
   if (sdata.length !== 0) {
     let state = {
       options: {
         dataLabels: {
-          enabled: true,
+          enabled: true
           
         },
        
+        
 
         colors: ["#3663B5", "#2E66DB", "#4A80D8", "#70A1EC", "#A8CCFD"],
+      
+      //  ...(sdata.length > 5 ? 
+      //       {
+      //         colors:"#33dd",
+      //       }:{
+      //         colors:"#ddd5",
+           
+
+          
+      //   }),
       
         chart: {
           id: "basic-bar",
@@ -38,7 +50,9 @@ function ApexChart({ sdata }) {
             //     barHeight: '70%',
                   
             //   }),
-          
+
+           
+           
             
 
             dataLabels: {
@@ -102,6 +116,7 @@ function ApexChart({ sdata }) {
               type="bar"
               height="1000"
               width="100%"
+              
             />}
           </div>
         
@@ -116,6 +131,9 @@ const ApexChartStyled = styled.div`
   overflow-x: hidden;
   /* min-height: 100px;
   max-height: 400px; */
+  .apexcharts-toolbar {
+    z-index: 0 !important;
+  }
 }
 
 
