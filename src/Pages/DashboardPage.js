@@ -7,7 +7,6 @@ import { Title } from "../Components/Title";
 import { Mainlayout } from "../styles/Layouts";
 import SelectOptions from "../Components/SelectOptions";
 import axios from "axios";
-import UseFetchData from "../hooks/UseFetchData";
 
 export const DashboardPage = () => {
   const [formData, setFormData] = useState({
@@ -17,24 +16,28 @@ export const DashboardPage = () => {
     year: [],
   });
   const [countriesValue, setCountriesValue] = useState([]);
+  const [rangeValue, setRangeValue] = useState({});
   
   const [apiData, setApiData] = useState([]);
 
   const onChange = (val) => setCountriesValue(val);
-  console.log(countriesValue)
+  
+  const onChangeCompletes = (arg) => setRangeValue(arg)
+
 
 
   const onSubmit = (event) => {
     event.preventDefault();
     const datas = new FormData(event.target);
     const valueData = Object.fromEntries(datas.entries());
+    console.log(rangeValue, "range val")
     let count
     if(countriesValue.length > 0){
       count = `${countriesValue.map((c) => c.value )}`
     }else{
       count = ''
     }
-     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
+     axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}&min_rank=${rangeValue.min}&max_rank=${rangeValue.max}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
     
   };
   
@@ -78,7 +81,7 @@ export const DashboardPage = () => {
     fetchData();
   }, []);
 
-  const data = [];
+
   return (
     <Mainlayout>
       <DashboardStyled>
@@ -89,6 +92,7 @@ export const DashboardPage = () => {
           onChange={onChange}
           onSubmit={onSubmit}
           formData={formData}
+          onChangeCompletes={onChangeCompletes}
 
         />
         <Row>
