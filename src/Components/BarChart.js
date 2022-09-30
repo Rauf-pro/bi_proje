@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import styled from "styled-components";
 
 
-function ApexChart({ sdata }) {
+function BarChart({ sdata }) {
   console.log("sdsdsd", sdata);
   console.log(sdata.length);
 
@@ -138,4 +138,4 @@ const ApexChartStyled = styled.div`
 
 
 `;
-export default ApexChart;
+export default BarChart;

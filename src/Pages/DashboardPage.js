@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
-import FinishData from "../Components/FinishData";
+import BarChart from "../Components/BarChart";
 import { Header } from "../Components/Header";
 import { Title } from "../Components/Title";
 import { Mainlayout } from "../styles/Layouts";
@@ -109,7 +109,7 @@ export const DashboardPage = () => {
         />
         <Row>
           <Col xl={6} lg={6} md={12} sm={12}>
-            <FinishData data={apiData} />
+          <BarChart sdata={apiData} />
           </Col>
           <Col xl={6} lg={6}>
           
