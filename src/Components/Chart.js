@@ -83,7 +83,7 @@ function ApexChart({ sdata }) {
            
           },
 
-          categories: [...sdata.map((count) =>   (count.countries.name))],
+          categories: [...sdata.map((count) =>  (`${count.rank} ${count.countries.name}`))],
         },
       
         

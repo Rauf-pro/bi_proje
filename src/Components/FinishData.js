@@ -9,7 +9,6 @@ function FinishData({ data }) {
   }, [data]);
   return (
     <FinishDataStyled>
-    {/* <SimpleBarChart data={sdata} /> */}
       <ApexChart sdata={data} />
     </FinishDataStyled>
   );
