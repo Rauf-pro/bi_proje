@@ -1,4 +1,3 @@
-import Chart from "./BarChart";
 import React, { useEffect } from "react";
 import ApexChart from "./Chart";
 import styled from "styled-components";
