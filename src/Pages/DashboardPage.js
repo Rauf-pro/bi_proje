@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
 import BarChart from "../Components/BarChart";
+import LineChart from "../Components/LineChart"
 import { Header } from "../Components/Header";
 import { Title } from "../Components/Title";
 import { Mainlayout } from "../styles/Layouts";
@@ -19,6 +20,7 @@ export const DashboardPage = () => {
   const [rangeValue, setRangeValue] = useState({});
   
   const [apiData, setApiData] = useState([]);
+  const [fullApiData, setFullApiData] = useState([]);
 
   const onChange = (val) => setCountriesValue(val);
   
@@ -50,7 +52,7 @@ export const DashboardPage = () => {
       max = ''
     }
      axios.get( `http://192.168.0.113:8000/business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}&years__year=${valueData.year}&min_rank=${min}&max_rank=${max}`).then((res) =>  {setApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
-    
+     axios.get( `http://192.168.0.113:8000/custom-business-intelligence-list/?countries__codes=${count}&categories=${valueData.category}&indicators=${valueData.indicator}`).then((res) =>  {setFullApiData(res.data); console.log(res.data, "dsfdsdsd")} ).catch((err) => console.log(err))
   };
   
   const fetchData = () => {
@@ -112,7 +114,7 @@ export const DashboardPage = () => {
           <BarChart sdata={apiData} />
           </Col>
           <Col xl={6} lg={6}>
-          
+            <LineChart sdata={fullApiData} years={formData.year} />
           </Col>
         </Row>
         </Container>
