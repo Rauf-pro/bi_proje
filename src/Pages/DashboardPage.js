@@ -114,7 +114,7 @@ export const DashboardPage = () => {
           <BarChart sdata={apiData} />
           </Col>
           <Col xl={6} lg={6}>
-            <LineChart sdata={fullApiData} years={formData.year} />
+            <LineChart linedata={fullApiData} years={formData.year} />
           </Col>
         </Row>
         </Container>
