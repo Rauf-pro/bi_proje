@@ -91,14 +91,12 @@ function BarChart({ sdata }) {
       series: [
         {
           name: "Series 1",
-          data: [...sdata.map((a) => a.amount_)],
+          data: [...sdata.map((a) => a.amount)],
           
         },
       ],
     };
    
-
-    console.log("state", state);
     return (
       <ApexChartStyled className="app">
           <div className="graphic-container">

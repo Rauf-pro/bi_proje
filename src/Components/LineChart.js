@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 
 function LineChart({ sdata, years }) {
-  console.log("line chart", sdata);
-  console.log(sdata.length, "line");
-  console.log(years, "years")
+  // console.log("line chart", sdata);
+  // console.log(sdata.length, "line");
+  // console.log(years, "years")
 
  
 
