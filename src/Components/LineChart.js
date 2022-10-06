@@ -13,31 +13,7 @@ function LineChart({ sdata, years }) {
   if (sdata.length !== 0) {
     let state = {
           
-        series: [
-          {
-            name: "Russian Federation",
-            data: [
-              "66.72756",
-              "64.918"
-            ]
-          },
-          {
-            name: "Fiji",
-            data: ["66.362"]
-          },
-          {
-            name: "Kazakhstan",
-            data: ["66.15"]
-          },
-          {
-            name: "Bhutan",
-            data: ["66.031"]
-          },
-          {
-            name: "Bolivia",
-            data: ["65.853"]
-          },
-        ],
+        series: sdata,
         options: {
           chart: {
             height: 350,
